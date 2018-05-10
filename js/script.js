@@ -1,35 +1,38 @@
 let screen = document.querySelector("#screen");
-let color = "black";
-let gridCellNumber = 16;
-let gridSize = 448;
-let gridCellSize = gridSize / gridCellNumber;
+let clearBtn = document.querySelector("#clear-btn");
 
-for(let r = 0; r < gridCellNumber; r++){
-  	let row = document.createElement("div");
-  	row.setAttribute("class", "row");
-  	for(let c = 0; c < gridCellNumber; c++){
-    		let col = document.createElement("div");
-        col.setAttribute("style", "width: "+gridCellSize+"px; height: "+gridCellSize+"px;");
-    		col.setAttribute("class", "grid-cell");
-    		row.appendChild(col);
-  	}
-    document.documentElement.style.setProperty("--screenSize", gridSize+"px");
-    document.documentElement.style.setProperty("--containerHeight", gridSize+160+"px");
-    document.documentElement.style.setProperty("--containerWidth", gridSize+50+"px");
-  	screen.appendChild(row);
+let color = '#3a3a3a';
+
+function createGrid(size) {
+  const numberOfCells = Math.pow(size, 2);
+
+  gridElements = "auto ".repeat(size).trim();
+
+  for(let x = 0; x < numberOfCells; x++){
+    	let cell = document.createElement("div");
+    	cell.className = "grid-cell";
+    	screen.appendChild(cell);
+  }
+  screen.setAttribute('style', `grid-template-columns: ${gridElements}; grid-template-rows: ${gridElements};`);
 }
-
-let gridCells = document.querySelectorAll(".grid-cell");
 
 let drawColor = (e) => {
     e.target.style.backgroundColor = color
 }
 
 let clearGrid = () => {
+  const gridCells = document.querySelectorAll('.grid-cell');
 	gridCells.forEach(gridCell => gridCell.style.backgroundColor = "white");
 }
 
-let clearBtn = document.querySelector("#clear-btn");
-clearBtn.addEventListener("click", clearGrid);
+function init() {
+  const defaultSize = 16;
+  createGrid(defaultSize);
 
-gridCells.forEach(gridCell => gridCell.addEventListener("mouseenter", drawColor));
+  const gridCells = document.querySelectorAll('.grid-cell');
+  gridCells.forEach(gridCell => gridCell.addEventListener("mouseenter", drawColor));
+
+  clearBtn.addEventListener("click", clearGrid);
+}
+
+init();
