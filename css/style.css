@@ -2,12 +2,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 :root {
-  --gridNumber: 16;
   --flatBlue: #34495e;
   --flatRed: #c0392b;
   --screenSize: 500px;
-  --containerHeight: 660px;
-  --containerWidth: 550px;
 }
 
 body {
@@ -23,22 +20,37 @@ h1 {
 
 #container {
   background-color: var(--flatRed);
-  width: var(--containerWidth);
-  height: var(--containerHeight);
+  width: 660px;
+  height: 700px;
   margin: auto;
+  border-radius: 10px;
+}
+
+#button-group {
+  text-align: center;
+}
+
+.button {
+  width: 150px;
+  padding: 8px;
+  margin: 8px;
+  border-style: none;
+  border-radius: 4px;
+  font-size: 14;
 }
 
 #screen {
+  margin: auto;
+  display: grid;
   height: var(--screenSize);
   width: var(--screenSize);
-  margin: 30px auto;
   border: 10px solid grey;
   border-radius: 10px;
 }
 
 .grid-cell{
-	display: inline-block;
 	margin: 0px;
-	float: left;
 	background: white;
+  height: auto;
+  width: auto;
 }
