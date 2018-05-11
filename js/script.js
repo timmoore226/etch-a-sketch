@@ -38,8 +38,15 @@ let clearGrid = () => {
 	gridCells.forEach(gridCell => gridCell.style.backgroundColor = "white");
 }
 
-let drawRainbowColors = () => {
+let switchColors = () => {
   rainbow = rainbow ? false : true;
+  if(rainbow) {
+    console.log(rainbowBtn.value);
+    rainbowBtn.innerText = "Color Black";
+  } else {
+    console.log(rainbowBtn.value);
+    rainbowBtn.innerText = "Color Rainbows";
+  }
 }
 
 function init() {
@@ -49,7 +56,7 @@ function init() {
   const gridCells = getGridCells();
   gridCells.forEach(gridCell => gridCell.addEventListener("mouseenter", drawColor));
 
-  rainbowBtn.addEventListener("click", drawRainbowColors);
+  rainbowBtn.addEventListener("click", switchColors);
   clearBtn.addEventListener("click", clearGrid);
 }
 
