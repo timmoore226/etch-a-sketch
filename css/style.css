@@ -5,6 +5,8 @@
   --flatBlue: #34495e;
   --flatRed: #c0392b;
   --screenSize: 500px;
+  --grey: #95a5a6;
+  --activeGrey: #7f8c8d;
 }
 
 body {
@@ -31,12 +33,18 @@ h1 {
 }
 
 .button {
-  width: 150px;
+  width: 160px;
   padding: 8px;
   margin: 8px;
   border-style: none;
-  border-radius: 4px;
-  font-size: 14;
+  border-radius: .25rem;
+  font-size: 16px;
+  color: white;
+  background-color: var(--grey);
+}
+
+.button:active {
+  background-color: var(--activeGrey);
 }
 
 #screen {
@@ -44,7 +52,7 @@ h1 {
   display: grid;
   height: var(--screenSize);
   width: var(--screenSize);
-  border: 10px solid grey;
+  border: 10px solid var(--grey);
   border-radius: 10px;
 }
 
